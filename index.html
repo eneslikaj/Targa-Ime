@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Targa Ime | Bespoke Plates</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;700&family=Overpass+Mono:wght@700&display=swap" rel="stylesheet" crossorigin="anonymous">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Orbitron', 'sans-serif'],
+              plate: ['"Overpass Mono"', 'monospace'],
+            },
+            colors: {
+              brand: {
+                yellow: '#FFD700',
+                dark: '#0f0f0f',
+                accent: '#00E5FF'
+              }
+            },
+            backgroundImage: {
+              'carbon': "url('https://www.transparenttextures.com/patterns/carbon-fibre.png')",
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1a1a1a; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #444; 
+      }
+      
+      /* 4D Text Effect Utility */
+      .text-4d {
+        text-shadow: 
+          1px 1px 0px #000,
+          2px 2px 0px #000,
+          3px 3px 0px #000,
+          4px 4px 2px rgba(0,0,0,0.5);
+      }
+      .text-gel {
+        filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.4));
+        background: linear-gradient(180deg, #333 0%, #000 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
+    "html-to-image": "https://aistudiocdn.com/html-to-image@^1.11.11"
+  }
+}
+</script>
+</head>
+  <body class="bg-brand-dark text-white antialiased overflow-x-hidden">
+    <div id="root"></div>
+  </body>
+</html>
