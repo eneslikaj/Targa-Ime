@@ -169,10 +169,10 @@ const Builder = () => {
   };
 
   return (
-    // Flex direction reversed on mobile to show controls first (as requested)
-    <div className="pt-24 pb-12 px-4 max-w-7xl mx-auto min-h-screen flex flex-col-reverse lg:flex-row gap-8 lg:gap-12">
+    // Default column layout ensures Preview comes first on mobile
+    <div className="pt-24 pb-12 px-4 max-w-7xl mx-auto min-h-screen flex flex-col lg:flex-row gap-8 lg:gap-12">
       
-      {/* Left (Desktop) / Bottom (Mobile): Preview Area */}
+      {/* Left (Desktop) / Top (Mobile): Preview Area */}
       <div className="lg:w-1/2 flex flex-col gap-8">
         <div className="lg:sticky lg:top-28">
           <h2 className="text-2xl font-display font-bold mb-6 flex items-center gap-2">
@@ -216,7 +216,7 @@ const Builder = () => {
         </div>
       </div>
 
-      {/* Right (Desktop) / Top (Mobile): Controls */}
+      {/* Right (Desktop) / Bottom (Mobile): Controls */}
       <div className="lg:w-1/2 bg-gray-900/30 p-6 rounded-2xl border border-gray-800 backdrop-blur-md h-fit">
         <div className="flex items-center gap-3 mb-6">
           <Settings className="text-brand-accent" size={24} />
@@ -265,29 +265,6 @@ const Builder = () => {
              </div>
           </AccordionItem>
 
-          {/* Shape Selection */}
-          <AccordionItem 
-            title="Forma e Targës" 
-            isOpen={activeSection === 'shape'} 
-            onClick={() => toggleSection('shape')}
-          >
-             <div className="grid grid-cols-2 gap-3">
-               {Object.values(PlateShape).map((shape) => (
-                 <button
-                   key={shape}
-                   onClick={() => updateConfig('shape', shape)}
-                   className={`p-3 rounded-lg border text-center transition-all ${
-                     config.shape === shape 
-                       ? 'bg-white text-black border-white' 
-                       : 'bg-black border-gray-700 text-gray-300 hover:border-gray-500'
-                   }`}
-                 >
-                   {shape}
-                 </button>
-               ))}
-             </div>
-          </AccordionItem>
-
            {/* Color Selection */}
            <AccordionItem 
             title="Sfondi / Ngjyra" 
@@ -329,64 +306,6 @@ const Builder = () => {
                  </div>
                </div>
              )}
-          </AccordionItem>
-
-           {/* Additional Options */}
-           <AccordionItem 
-            title="Opsione Shtesë" 
-            isOpen={activeSection === 'options'} 
-            onClick={() => toggleSection('options')}
-          >
-             <div className="space-y-4">
-               {/* Border Toggle */}
-               <div className="flex items-center justify-between p-3 bg-black border border-gray-700 rounded-lg">
-                 <span className="text-gray-300">Kornizë e Zezë</span>
-                 <button 
-                   onClick={() => updateConfig('border', !config.border)}
-                   className={`w-12 h-6 rounded-full relative transition-colors ${config.border ? 'bg-brand-accent' : 'bg-gray-700'}`}
-                 >
-                   <div className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-transform ${config.border ? 'translate-x-6' : ''}`} />
-                 </button>
-               </div>
-
-               {/* Flag Selection */}
-               <div>
-                 <label className="block text-sm text-gray-400 mb-2">Flamuri / Logo</label>
-                 <div className="flex gap-2">
-                   {['UK', 'EU', null].map((flag) => (
-                     <button
-                       key={flag || 'none'}
-                       onClick={() => updateConfig('flag', flag)}
-                       className={`flex-1 py-2 rounded border text-sm font-bold transition-all ${
-                         config.flag === flag 
-                           ? 'bg-blue-600 border-blue-600 text-white' 
-                           : 'bg-black border-gray-700 text-gray-400 hover:border-gray-500'
-                       }`}
-                     >
-                       {flag === 'UK' ? 'UK' : flag === 'EU' ? 'EU' : 'Asnjë'}
-                     </button>
-                   ))}
-                 </div>
-               </div>
-
-               {/* Shine Intensity Slider */}
-               <div>
-                 <div className="flex justify-between items-center mb-2">
-                    <label className="text-sm text-gray-400">Intensiteti i Shkëlqimit</label>
-                    <span className="text-xs text-brand-accent font-mono">{(config.shineIntensity * 100).toFixed(0)}%</span>
-                 </div>
-                 <input 
-                   type="range" 
-                   min="0" 
-                   max="1" 
-                   step="0.05" 
-                   value={config.shineIntensity}
-                   onChange={(e) => updateConfig('shineIntensity', parseFloat(e.target.value))}
-                   className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-brand-accent"
-                 />
-                 <p className="text-[10px] text-gray-500 mt-1">Rregulloni efektin e shkëlqimit sipas dëshirës.</p>
-               </div>
-             </div>
           </AccordionItem>
           
         </div>
